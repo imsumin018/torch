@@ -2,13 +2,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
+#%%
 from torch.utils.data import DataLoader
 from sem_seg_dataset import SegmentationDataset
 import segmentation_models_pytorch as smp 
-import torchmetrics
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
+import torchmetrics
 #%% Dataset and Dataloader
-test_ds = SegmentationDataset(path_name='test')
+test_ds = SegmentationDataset(path_name='/Users/s/github/torch/100_SemanticSegmentation/test')
+
+#%%
 test_dataloader = DataLoader(test_ds, batch_size=1, shuffle=True)
 
 #%%

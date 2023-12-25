@@ -21,7 +21,7 @@ y_list = cars.mpg.values.tolist()
 y_np = np.array(y_list, dtype=np.float32).reshape(-1,1)
 X = torch.from_numpy(X_np)
 y = torch.tensor(y_list)
-
+print(X_np)
 
 #%% training
 w = torch.rand(1, requires_grad=True, dtype=torch.float64)
