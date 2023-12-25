@@ -2,7 +2,6 @@ from torch.utils.data import Dataset
 import os
 from pathlib import Path
 import cv2
-
 class SegmentationDataset(Dataset):
     """Create Semantic Segmentation Dataset. Read images, apply augmentations, and process transformations
 
@@ -16,6 +15,7 @@ class SegmentationDataset(Dataset):
         super().__init__()
         self.image_names = os.listdir(f"{path_name}/images")
         self.image_paths = [f"{path_name}/images/{i}" for i in self.image_names]
+        print(self.image_names)
         self.masks_names = os.listdir(f"{path_name}/masks")
         self.masks_paths = [f"{path_name}/masks/{i}" for i in self.masks_names]
         

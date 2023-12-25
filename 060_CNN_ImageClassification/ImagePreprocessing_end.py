@@ -23,3 +23,4 @@ x
 
 # %% get the mean and std of given image
 x.mean([1, 2]), x.std([1, 2])
+# %%

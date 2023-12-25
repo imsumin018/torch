@@ -40,14 +40,15 @@ def create_patches(src, dest_path):
                 patch.save(f"{dest_path}/{file_name_wo_ext}_tile_{tile_num}_patch_{num}.png")
 
 #%% copy all files
-for path_name, _, file_name in os.walk('data'):
+for path_name, _, file_name in os.walk('/Users/s/github/torch/100_SemanticSegmentation/data/'):
     for f in file_name:
         print(f)
         if f != 'classes.json':
             
             path_split = os.path.split(path_name)
-            tile_num = re.findall(r'\d+', path_split[0])[0]
-            
+            tile_num = re.findall(r'\d', path_split[0])[0]
+            print("tilenumber")
+            print(tile_num)
             img_type =path_split[1]  # either 'masks' or 'images'
             
             # leave out tile 2, issues with color dim
@@ -69,7 +70,9 @@ for path_name, _, file_name in os.walk('data'):
             mask_file = f"{path_split[0]}/masks/{file_name_wo_ext}.png"
             if os.path.exists(img_file) and os.path.exists(mask_file):
                 if img_type == 'images':
+                    print(target_folder_imgs)
                     dest = os.path.join(target_folder_imgs, img_type)
+                    
                     create_patches(src=src, dest_path=dest)
                     
                     
